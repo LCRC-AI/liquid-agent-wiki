@@ -4799,6 +4799,19 @@ body {
   gap: 6px;
 }
 
+.portal-footer-terms {
+  width: fit-content;
+  color: rgba(32, 33, 36, 0.68);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.portal-footer-terms:hover {
+  color: #202124;
+}
+
 .portal-command-pill {
   min-height: 28px;
   display: inline-grid;

@@ -4,7 +4,7 @@
 
 # Installation
 
-[Join the Waitlist](https://uniofleicester-my.sharepoint.com/:w:/r/personal/hy208_leicester_ac_uk/Documents/2025-2026%20Leicester-connecting/2026.9-10%20LIQUID-Agent_IP_Commercialisation/2026.09.30/Carl%27s_Liquid%20Agentv1.docx?d=wc93487c5a8a746deaccc29563c86409c&csf=1&web=1&e=zua23c&nav=eyJoIjoiMTE0MTk5OTI3OSJ9){ .md-button .md-button--primary target="_blank" rel="noopener noreferrer" }
+[Join the Waitlist](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=as2-rtQxAUuVzoJ0r-hT2crr7c84XABNtm_gHP1xL7VUN0owN1JPSFlaRzlCWVlCME1IMTNKWFlENC4u){ .md-button .md-button--primary target="_blank" rel="noopener noreferrer" }
 
 Download and extract [the repository](https://github.com/LCRC-AI/liquid-agent-release),
 or clone it. Keep this folder after the first installation; the launcher uses its
@@ -253,7 +253,7 @@ WSL follows the Linux installation path rather than the native Windows path.
 
 # 安装（中文）
 
-[Join the Waitlist](https://uniofleicester-my.sharepoint.com/:w:/r/personal/hy208_leicester_ac_uk/Documents/2025-2026%20Leicester-connecting/2026.9-10%20LIQUID-Agent_IP_Commercialisation/2026.09.30/Carl%27s_Liquid%20Agentv1.docx?d=wc93487c5a8a746deaccc29563c86409c&csf=1&web=1&e=zua23c&nav=eyJoIjoiMTE0MTk5OTI3OSJ9){ .md-button .md-button--primary target="_blank" rel="noopener noreferrer" }
+[Join the Waitlist](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=as2-rtQxAUuVzoJ0r-hT2crr7c84XABNtm_gHP1xL7VUN0owN1JPSFlaRzlCWVlCME1IMTNKWFlENC4u){ .md-button .md-button--primary target="_blank" rel="noopener noreferrer" }
 
 先下载并解压[项目代码](https://github.com/LCRC-AI/liquid-agent-release)，或克隆仓库。
 安装后保留代码目录，启动命令依赖该目录。前提是本机已安装 Python 3.11+（建议 3.12）

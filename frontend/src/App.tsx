@@ -935,6 +935,11 @@ function portalInstallationHref() {
   return `./docs/${locale}/getting-started/installation/`;
 }
 
+function portalReleaseTermsHref() {
+  const locale = currentLanguage() === "zh-CN" ? "zh" : "en";
+  return `./docs/${locale}/release-terms/`;
+}
+
 function PortalTryLink({ className }: { className?: string }) {
   return <a className={className} href={portalInstallationHref()}>{t("Try it")}</a>;
 }
@@ -1080,6 +1085,7 @@ function PortalFooter() {
           ))}
         </div>
         <small>{t("npm commands call the installed local Python analysis kernel.")}</small>
+        <a className="portal-footer-terms" href={portalReleaseTermsHref()}>{t("Early Access Terms")}</a>
       </div>
     </footer>
   );

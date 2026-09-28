@@ -7,6 +7,8 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urljoin, urlsplit
 
+WAITLIST_URL = "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=as2-rtQxAUuVzoJ0r-hT2crr7c84XABNtm_gHP1xL7VUN0owN1JPSFlaRzlCWVlCME1IMTNKWFlENC4u"
+
 
 class Links(HTMLParser):
     def __init__(self):
@@ -48,8 +50,15 @@ def check(root: Path):
         parser.feed(file.read_text(encoding="utf-8"))
         if relative in ("docs/en/getting-started/installation/index.html", "docs/zh/getting-started/installation/index.html"):
             waitlist = [anchor for anchor in parser.anchors if anchor["text"].strip() == "Join the Waitlist"]
-            if len(waitlist) != 1 or "md-button--primary" not in waitlist[0]["class"]:
+            if (len(waitlist) != 1 or "md-button--primary" not in waitlist[0]["class"]
+                    or waitlist[0]["href"] != WAITLIST_URL):
                 errors.append(f"{relative}: expected one primary Join the Waitlist link")
+        if relative in ("docs/en/release-terms/index.html", "docs/zh/release-terms/index.html"):
+            body = file.read_text(encoding="utf-8")
+            for required in ("LIQUID-Agent Early Access Evaluation Agreement", "Document status:",
+                             "10. Permissions and enquiries", "Participant acknowledgement"):
+                if required not in body:
+                    errors.append(f"{relative}: missing agreement content: {required}")
         base = "https://portal.test/" + relative
         for ref in parser.references:
             target_url = urlsplit(urljoin(base, ref))
@@ -76,6 +85,8 @@ def check(root: Path):
     portal_javascript = "\n".join(path.read_text(encoding="utf-8") for path in (root / "assets").glob("*.js"))
     if "getting-started/installation/" not in portal_javascript or "launch=1" in portal_javascript:
         raise SystemExit("Built Try it actions must open installation documentation without a launch/probe query.")
+    if "release-terms/" not in portal_javascript or "Early Access Terms" not in portal_javascript:
+        raise SystemExit("Built portal footer must link to the Early Access Terms page.")
     if (root / "docs/en/assets/workspace-handoff.js").exists() or (root / "docs/zh/assets/workspace-handoff.js").exists():
         raise SystemExit("Local-workspace handoff script must not be included in the public docs build.")
     print(f"PASS: {count} local references; {docs} documentation pages with four working home links at root and under a project prefix.")
