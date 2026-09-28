@@ -1085,7 +1085,7 @@ function PortalFooter() {
           ))}
         </div>
         <small>{t("npm commands call the installed local Python analysis kernel.")}</small>
-        <a className="portal-footer-terms" href={portalReleaseTermsHref()}>{t("Early Access Terms")}</a>
+        <a className="portal-footer-terms" href={portalReleaseTermsHref()}>{t("Terms of Use")}</a>
       </div>
     </footer>
   );

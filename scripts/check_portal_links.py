@@ -55,11 +55,18 @@ def check(root: Path):
                 errors.append(f"{relative}: expected one primary Join the Waitlist link")
         if relative in ("docs/en/release-terms/index.html", "docs/zh/release-terms/index.html"):
             body = file.read_text(encoding="utf-8")
-            for required in ("LIQUID-Agent Early Access Evaluation Agreement",
-                             "10. Permissions and enquiries", "Participant acknowledgement"):
+            for required in ("LIQUID-Agent Terms of Use", "10. Permissions and enquiries"):
                 if required not in body:
                     errors.append(f"{relative}: missing agreement content: {required}")
-            for removed in ("Document status:", "<strong>Contact:</strong>", "<strong>Purpose.</strong>"):
+            for removed in (
+                "LIQUID-Agent Early Access Evaluation Agreement",
+                "Participant acknowledgement",
+                "Participant information",
+                "University approval / authorised representative",
+                "Document status:",
+                "<strong>Contact:</strong>",
+                "<strong>Purpose.</strong>",
+            ):
                 if removed in body:
                     errors.append(f"{relative}: removed agreement preamble is still present: {removed}")
         base = "https://portal.test/" + relative
@@ -88,8 +95,8 @@ def check(root: Path):
     portal_javascript = "\n".join(path.read_text(encoding="utf-8") for path in (root / "assets").glob("*.js"))
     if "getting-started/installation/" not in portal_javascript or "launch=1" in portal_javascript:
         raise SystemExit("Built Try it actions must open installation documentation without a launch/probe query.")
-    if "release-terms/" not in portal_javascript or "Early Access Terms" not in portal_javascript:
-        raise SystemExit("Built portal footer must link to the Early Access Terms page.")
+    if "release-terms/" not in portal_javascript or "Terms of Use" not in portal_javascript:
+        raise SystemExit("Built portal footer must link to the Terms of Use page.")
     public_text = {".html", ".js", ".css", ".json", ".txt", ".xml"}
     if any("LCRC-AI/liquid-agent-release" in path.read_text(encoding="utf-8", errors="ignore")
            for path in root.rglob("*") if path.is_file() and path.suffix in public_text):

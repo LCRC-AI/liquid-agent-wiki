@@ -2,7 +2,7 @@
 
 [English](#english) | [简体中文](#chinese)
 
-# LIQUID-Agent Early Access Evaluation Agreement
+# LIQUID-Agent Terms of Use
 
 ## 1. Scope and status of access
 
@@ -74,21 +74,6 @@ Permission for commercial use, modification, integration, licensing, collaborati
 
 - Dr Yang Hu — [hy208@leicester.ac.uk](mailto:hy208@leicester.ac.uk)
 - University of Leicester Commercial & IP support — [commercial-support@leicester.ac.uk](mailto:commercial-support@leicester.ac.uk)
-
-## Participant acknowledgement
-
-By signing below, the participant confirms that they have read and agree to comply with these early-access evaluation terms, subject to the final University-approved version.
-
-| Participant information | Response |
-| --- | --- |
-| Participant name | |
-| Institution / organisation | |
-| Role / position | |
-| Email | |
-| Signature | |
-| Date | |
-
-**University approval / authorised representative:** [to be completed in the final approved version, if required]
 
 <!-- BEGIN CHINESE TRANSLATION -->
 
@@ -96,7 +81,7 @@ By signing below, the participant confirms that they have read and agree to comp
 
 <a id="chinese"></a>
 
-# LIQUID-Agent Early Access Evaluation Agreement
+# LIQUID-Agent Terms of Use
 
 ## 1. Scope and status of access
 
@@ -168,18 +153,3 @@ Permission for commercial use, modification, integration, licensing, collaborati
 
 - Dr Yang Hu — [hy208@leicester.ac.uk](mailto:hy208@leicester.ac.uk)
 - University of Leicester Commercial & IP support — [commercial-support@leicester.ac.uk](mailto:commercial-support@leicester.ac.uk)
-
-## Participant acknowledgement
-
-By signing below, the participant confirms that they have read and agree to comply with these early-access evaluation terms, subject to the final University-approved version.
-
-| Participant information | Response |
-| --- | --- |
-| Participant name | |
-| Institution / organisation | |
-| Role / position | |
-| Email | |
-| Signature | |
-| Date | |
-
-**University approval / authorised representative:** [to be completed in the final approved version, if required]

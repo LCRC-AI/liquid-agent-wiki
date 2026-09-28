@@ -42,7 +42,7 @@ nav:
       - Natural-Language Examples: getting-started/natural-language-examples.md
       - Illustrated Workspace Walkthrough: getting-started/workspace-walkthrough.md
       - Web UI: getting-started/web-ui.md
-  - Early Access Terms: release-terms.md
+  - Terms of Use: release-terms.md
   - Guides:
       - Blood-Signal Preprocessing: guides/preprocessing.md
       - Blood-Signal Encoding: guides/blood-encoding.md
