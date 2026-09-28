@@ -6,9 +6,10 @@
 
 [Join the Waitlist](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=as2-rtQxAUuVzoJ0r-hT2crr7c84XABNtm_gHP1xL7VUN0owN1JPSFlaRzlCWVlCME1IMTNKWFlENC4u){ .md-button .md-button--primary target="_blank" rel="noopener noreferrer" }
 
-Download and extract [the repository](https://github.com/LCRC-AI/liquid-agent-release),
-or clone it. Keep this folder after the first installation; the launcher uses its
-code until the first successful update moves the application into managed versions.
+After your early-access application is approved, download and extract the package
+provided in your invitation, or clone it using the access details supplied to you.
+Keep this folder after the first installation; the launcher uses its code until
+the first successful update moves the application into managed versions.
 Python 3.11+ (3.12 recommended) and Node.js/npm must already be installed.
 The installer does **not** install Python or Node.
 
@@ -255,7 +256,7 @@ WSL follows the Linux installation path rather than the native Windows path.
 
 [Join the Waitlist](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=as2-rtQxAUuVzoJ0r-hT2crr7c84XABNtm_gHP1xL7VUN0owN1JPSFlaRzlCWVlCME1IMTNKWFlENC4u){ .md-button .md-button--primary target="_blank" rel="noopener noreferrer" }
 
-先下载并解压[项目代码](https://github.com/LCRC-AI/liquid-agent-release)，或克隆仓库。
+早鸟体验申请获批后，请下载并解压邀请中提供的软件包，或使用邀请中提供的访问信息克隆代码。
 安装后保留代码目录，启动命令依赖该目录。前提是本机已安装 Python 3.11+（建议 3.12）
 及 Node.js/npm；安装器**不会连带安装 Python 或 Node**。
 

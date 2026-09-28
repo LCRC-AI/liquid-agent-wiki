@@ -55,10 +55,13 @@ def check(root: Path):
                 errors.append(f"{relative}: expected one primary Join the Waitlist link")
         if relative in ("docs/en/release-terms/index.html", "docs/zh/release-terms/index.html"):
             body = file.read_text(encoding="utf-8")
-            for required in ("LIQUID-Agent Early Access Evaluation Agreement", "Document status:",
+            for required in ("LIQUID-Agent Early Access Evaluation Agreement",
                              "10. Permissions and enquiries", "Participant acknowledgement"):
                 if required not in body:
                     errors.append(f"{relative}: missing agreement content: {required}")
+            for removed in ("Document status:", "<strong>Contact:</strong>", "<strong>Purpose.</strong>"):
+                if removed in body:
+                    errors.append(f"{relative}: removed agreement preamble is still present: {removed}")
         base = "https://portal.test/" + relative
         for ref in parser.references:
             target_url = urlsplit(urljoin(base, ref))
@@ -87,6 +90,10 @@ def check(root: Path):
         raise SystemExit("Built Try it actions must open installation documentation without a launch/probe query.")
     if "release-terms/" not in portal_javascript or "Early Access Terms" not in portal_javascript:
         raise SystemExit("Built portal footer must link to the Early Access Terms page.")
+    public_text = {".html", ".js", ".css", ".json", ".txt", ".xml"}
+    if any("LCRC-AI/liquid-agent-release" in path.read_text(encoding="utf-8", errors="ignore")
+           for path in root.rglob("*") if path.is_file() and path.suffix in public_text):
+        raise SystemExit("Public build must not expose the private release repository URL.")
     if (root / "docs/en/assets/workspace-handoff.js").exists() or (root / "docs/zh/assets/workspace-handoff.js").exists():
         raise SystemExit("Local-workspace handoff script must not be included in the public docs build.")
     print(f"PASS: {count} local references; {docs} documentation pages with four working home links at root and under a project prefix.")

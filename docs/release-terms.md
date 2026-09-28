@@ -4,12 +4,6 @@
 
 # LIQUID-Agent Early Access Evaluation Agreement
 
-**Document status:** Draft
-
-**Contact:** Dr Yang Hu, University of Leicester | [hy208@leicester.ac.uk](mailto:hy208@leicester.ac.uk); Commercialisation team, University of Leicester | [commercial-support@leicester.ac.uk](mailto:commercial-support@leicester.ac.uk)
-
-**Purpose.** LIQUID-Agent is an AI-enabled research-support environment developed at the University of Leicester to assist researchers with supported liquid-biopsy analysis workflows. Early access is provided so that invited researchers can evaluate the tool and provide structured feedback before any wider release.
-
 ## 1. Scope and status of access
 
 **1.1** Access is granted solely for non-commercial research and evaluation during the LIQUID-Agent early testing programme.
@@ -103,12 +97,6 @@ By signing below, the participant confirms that they have read and agree to comp
 <a id="chinese"></a>
 
 # LIQUID-Agent Early Access Evaluation Agreement
-
-**Document status:** Draft
-
-**Contact:** Dr Yang Hu, University of Leicester | [hy208@leicester.ac.uk](mailto:hy208@leicester.ac.uk); Commercialisation team, University of Leicester | [commercial-support@leicester.ac.uk](mailto:commercial-support@leicester.ac.uk)
-
-**Purpose.** LIQUID-Agent is an AI-enabled research-support environment developed at the University of Leicester to assist researchers with supported liquid-biopsy analysis workflows. Early access is provided so that invited researchers can evaluate the tool and provide structured feedback before any wider release.
 
 ## 1. Scope and status of access
 
