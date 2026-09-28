@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="docs-context">
+    <a class="docs-home" href="{{ '../../#/' | url }}">{{ 'Back to Liquid Agent' if config.extra.docs_locale == 'en' else '\u8fd4\u56de Liquid Agent \u9996\u9875' }}</a>
+    <span>{{ 'DOCUMENTATION' if config.extra.docs_locale == 'en' else '\u4f7f\u7528\u6587\u6863' }}</span>
+  </div>
+  {{ super() }}
+{% endblock %}

@@ -1,0 +1,8 @@
+{% set locale = config.extra.docs_locale %}
+{% set page_url = page.url if page else '' %}
+<div class="docs-languages" aria-label="{{ lang.t('select.language') }}">
+  {% for code, name in [('en', 'English'), ('zh', '\u4e2d\u6587')] %}
+    <a href="{{ base_url }}/../{{ code }}/{{ page_url }}" hreflang="{{ code }}"
+       lang="{{ code }}" {% if code == locale %}aria-current="true"{% endif %}>{{ name }}</a>
+  {% endfor %}
+</div>

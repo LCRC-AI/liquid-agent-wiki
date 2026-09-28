@@ -1,0 +1,25 @@
+.portal-choice-group { display: flex; align-items: center; border: 1px solid var(--hairline); border-radius: 8px; }
+.portal-choice { position: relative; }
+.portal-choice + .portal-choice { border-left: 1px solid var(--hairline); }
+.portal-choice-trigger { display: flex; align-items: center; justify-content: center; gap: 10px; height: 32px; min-width: 78px; padding: 0 10px; border: 0; border-radius: 7px; color: inherit; background: transparent; font: inherit; font-size: 13px; cursor: pointer; }
+.portal-choice-trigger:hover, .portal-choice-trigger[aria-expanded="true"] { background: rgba(128,144,158,.12); }
+.portal-choice-theme { min-width: 34px; }
+.portal-choice-chevron { width: 6px; height: 6px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: rotate(45deg) translateY(-2px); }
+.portal-choice-swatch { display: inline-block; flex: 0 0 9px; width: 9px; height: 9px; border-radius: 50%; background: #16877c; }
+.portal-choice-swatch[data-swatch="rose"] { background: #c47f8c; }
+.portal-choice-swatch[data-swatch="sky"] { background: #7cadd3; }
+.portal-choice-swatch[data-swatch="stone"] { background: #b6a78a; }
+.portal-choice-popover { position: absolute; top: 100%; right: 0; z-index: 50; padding-top: 7px; min-width: 150px; }
+.portal-choice-menu { padding: 5px; border: 1px solid var(--hairline); border-radius: 9px; background: #fcfdfd; color: #253d48; box-shadow: 0 12px 35px #08121c22; }
+.portal-choice-menu button { display: flex; align-items: center; gap: 9px; width: 100%; min-height: 32px; padding: 6px 9px; border: 0; border-radius: 5px; background: transparent; color: inherit; text-align: left; font: inherit; font-size: 14px; cursor: pointer; }
+.portal-choice-menu button:is(:hover,:focus-visible) { background: rgba(128,144,158,.16); }
+.portal-choice-check { margin-left: auto; min-width: 10px; font-size: 13px; }
+.portal-home .portal-choice-group, .portal-home .portal-choice + .portal-choice { border-color: var(--portal-line); }
+.portal-home .portal-choice-menu { background: #141f2e; color: #dce6ef; border-color: var(--portal-line); box-shadow: 0 16px 40px #0005; }
+@media (max-width: 480px) {
+  .portal-shell .portal-nav { grid-template-columns: minmax(0,1fr) auto; height: auto; gap: 8px 12px; }
+  .portal-shell .portal-brand { grid-column: 1; grid-row: 1; min-width: max-content; }
+  .portal-shell .portal-mobile-menu-wrap { grid-column: 2; grid-row: 1; }
+  .portal-shell .portal-appearance-actions { grid-column: 1/-1; grid-row: 2; width: 100%; justify-content: space-between; }
+  .portal-choice-popover { left: 0; right: auto; }
+}

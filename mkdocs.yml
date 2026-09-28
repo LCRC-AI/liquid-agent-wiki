@@ -1,0 +1,65 @@
+site_name: LIQUID-Agent
+site_description: User documentation for the LIQUID-Agent liquid-biopsy workspace
+docs_dir: docs
+site_dir: site
+repo_url: https://github.com/LCRC-AI/liquid-agent-wiki
+repo_name: GitHub
+edit_uri: blob/main/docs/
+theme:
+  name: material
+  custom_dir: docs_theme
+  language: en
+  font: false
+  features:
+    - navigation.sections
+    - navigation.path
+    - navigation.footer
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+  palette:
+    - scheme: default
+      primary: teal
+      accent: teal
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+nav:
+  - Introduction: index.md
+  - Getting Started:
+      - Installation: getting-started/installation.md
+      - Your First Analysis: getting-started/quickstart.md
+      - Interactive Shell: getting-started/interactive-shell.md
+      - Natural-Language Examples: getting-started/natural-language-examples.md
+      - Illustrated Workspace Walkthrough: getting-started/workspace-walkthrough.md
+      - Web UI: getting-started/web-ui.md
+  - Guides:
+      - Blood-Signal Preprocessing: guides/preprocessing.md
+      - Blood-Signal Encoding: guides/blood-encoding.md
+      - cfDNA Analysis and Raw Signals: guides/cfdna-analysis.md
+      - Metadata and Label-Aware Planning: guides/metadata-label-aware-planning.md
+      - OpenAI GPT Configuration: guides/openai-configuration.md
+      - Local Language Models: guides/local-models.md
+      - Professional Skill Library: guides/professional-skills.md
+      - Linked Tasks and Local Memory: guides/linked-tasks-and-memory.md
+      - Images and Result Follow-ups: guides/images-and-result-actions.md
+      - Explicit Assay Tables: guides/assay-tables.md
+      - Frozen Prediction Studies: guides/prediction-studies.md
+      - Local Data and Model Privacy: guides/local-data-privacy.md
+  - Reference:
+      - Capability Matrix: reference/capability-matrix.md
+      - Skill Selection Guide: reference/skill-catalog.md
+      - Components and Methods: reference/components-and-methods.md
+      - Liquid-Biopsy Method Advisor: reference/liquid-biopsy-methods.md
+      - External Tool Runtimes: reference/external-tool-runtimes.md
+      - CLI Entrypoints: reference/cli.md
+      - Python API: reference/python-api.md
