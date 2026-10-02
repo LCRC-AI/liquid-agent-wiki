@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { PortalAppearance } from "./PortalAppearance";
 import { PortalCapabilities } from "./PortalCapabilities";
 import { PortalWave } from "./PortalWave";
+import { PortalResearchStats } from "./PortalResearchStats";
 import { currentLanguage, t } from "./i18n";
 
 const DNA_HISTORY = "https://le.ac.uk/news/2019/september/10-celebrating-35-years-of-dna-fingerprinting";
@@ -128,6 +129,7 @@ function PortalHome() {
       <p>{t("We bring intelligence to the research question, helping scientists follow small signals toward a deeper understanding of cancer.")}</p>
       <a className="liquid-text-link" href="#/story">{t("Our story")}</a>
     </section>
+    <PortalResearchStats />
   </main>;
 }
 
@@ -170,8 +172,12 @@ export function LiquidPortal({ route }: { route: string }) {
     setImmersed(page === "home");
     const hero = shell.current?.querySelector(".liquid-hero-immersive");
     if (page !== "home" || !hero) return;
-    const observer = new IntersectionObserver(([entry]) => setImmersed(entry.isIntersecting), {
-      root: shell.current, rootMargin: "-76px 0px 0px 0px",
+    // The water's darker top overlay moves away on scroll. Restore a solid
+    // header early so navigation never relies on the brighter lower water.
+    const observer = new IntersectionObserver(([entry]) => {
+      setImmersed(entry.isIntersecting && entry.intersectionRatio >= 0.8);
+    }, {
+      root: shell.current, rootMargin: "-76px 0px 0px 0px", threshold: [0, 0.8],
     });
     observer.observe(hero);
     return () => observer.disconnect();

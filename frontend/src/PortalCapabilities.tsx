@@ -58,6 +58,7 @@ export function PortalCapabilities() {
       <section className="liquid-capabilities-hero">
         <h1 id="liquid-explore-title">{t("Start with data. Get to analysis.")}</h1>
         <p>{t("A liquid-biopsy research workspace for turning questions into plans, results and continuing investigation.")}</p>
+        <a className="liquid-text-link" href={docs}>{t("Read the Docs")}</a>
       </section>
 
       <figure className="liquid-capabilities-demo" data-motion={posterFailed ? "unavailable" : playing ? "playing" : "stopped"}>

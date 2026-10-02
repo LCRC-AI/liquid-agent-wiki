@@ -1,0 +1,113 @@
+/* A quiet scale-of-research section. Only the numbers count, once on entry. */
+.liquid-research-stats {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.15fr);
+  gap: clamp(48px, 7vw, 112px);
+  margin: 0 var(--liquid-gutter);
+  padding: 76px 0 96px;
+  border-top: 1px solid var(--liquid-line);
+}
+
+.liquid-research-stats-copy h2 {
+  max-width: 440px;
+  margin: 0;
+  font-size: clamp(34px, 3.3vw, 48px);
+  font-weight: 300;
+  line-height: 1.14;
+  letter-spacing: -.04em;
+  text-wrap: balance;
+}
+
+.liquid-portal .liquid-research-stats-copy p {
+  max-width: 425px;
+  margin: 24px 0 0;
+  color: var(--liquid-muted);
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.liquid-research-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 38px 40px;
+  align-self: start;
+  margin: 0;
+}
+
+.liquid-research-stat {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.liquid-research-stat dt {
+  margin-top: 7px;
+  color: var(--liquid-muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.liquid-research-stat dd {
+  order: -1;
+  margin: 0;
+}
+
+.liquid-research-stat-number {
+  display: inline-block;
+  padding: 0 6px 4px 0;
+  color: var(--liquid-accent);
+  font-size: clamp(64px, 6.3vw, 96px);
+  font-weight: 650;
+  line-height: 1.08;
+  letter-spacing: -.055em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  filter: drop-shadow(0 0 16px rgb(169 199 188 / .14));
+}
+
+.liquid-research-stat-suffix {
+  display: inline-block;
+  padding-left: 3px;
+  font-size: .65em;
+  vertical-align: .1em;
+}
+
+.liquid-research-stat-accessible {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .liquid-research-stat-number {
+    background: linear-gradient(115deg, #edf2f1 12%, #a9c7bc 52%, #afc5d7 92%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+}
+
+@media (max-width: 767px) {
+  .liquid-research-stats {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+    padding: 54px 0 64px;
+  }
+  .liquid-research-stats-copy h2 { font-size: 36px; }
+  .liquid-portal .liquid-research-stats-copy p { font-size: 16px; }
+  .liquid-research-stats-grid { gap: 30px 24px; }
+  .liquid-research-stat-number { font-size: clamp(60px, 17vw, 80px); }
+  .liquid-research-stat dt { font-size: 14px; }
+}
+
+@media (forced-colors: active) {
+  .liquid-research-stat-number {
+    background: none;
+    color: CanvasText;
+    filter: none;
+  }
+}
