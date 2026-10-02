@@ -122,7 +122,7 @@ function PortalHome() {
     <section className="portal-hero liquid-hero liquid-hero-immersive">
       <PortalWave className="liquid-hero-wave" />
       <div className="liquid-hero-body">
-        <h1>{t("Tracing the origins of danger.")}</h1>
+        <h1>{t("Tracking the early signs of danger.")}</h1>
         <p>{t("AI for liquid-biopsy research, helping scientists investigate the molecular signals of cancer.")}</p>
         <a className="liquid-text-link" href="#/explore">{t("Explore")} <LiquidWordmark /></a>
       </div>
@@ -192,7 +192,7 @@ export function LiquidPortal({ route }: { route: string }) {
     return () => observer.disconnect();
   }, [page]);
   useEffect(() => {
-    document.title = `LIQUID-Agent | ${page === "explore" ? t("Explore") : page === "story" ? t("Our story") : t("Tracing the origins of danger.")}`;
+    document.title = `LIQUID-Agent | ${page === "explore" ? t("Explore") : page === "story" ? t("Our story") : t("Tracking the early signs of danger.")}`;
   }, [page, language]);
   useEffect(() => {
     if (destination) { window.location.replace(destination); return; }
