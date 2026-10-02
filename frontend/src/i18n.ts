@@ -1,10 +1,9 @@
-import messages from "./locales/zh-CN.json";
 import portalMessages from "./locales/portal.zh-CN.json";
 
 export type Language = "en" | "zh-CN";
 export const LANGUAGE_STORAGE_KEY = "liquid-agent-language-v1";
 const CHANGE_EVENT = "liquid-agent-language-change";
-const chinese: Record<string, string> = { ...messages, ...portalMessages };
+const chinese: Record<string, string> = portalMessages;
 let language: Language = "en";
 
 function validLanguage(value: unknown): Language {

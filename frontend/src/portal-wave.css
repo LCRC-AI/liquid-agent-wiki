@@ -1,0 +1,51 @@
+/* Real water footage belongs to the dark portal theme. The control occupies layer 1. */
+.portal-wave {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: clamp(360px, 36vw, 560px);
+  margin: 0;
+  overflow: hidden;
+  background: #151918;
+}
+.portal-wave-still,
+.portal-wave-video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.portal-wave-still,
+.portal-wave-video { object-fit: cover; object-position: center; }
+.portal-wave-video { opacity: 0; }
+.portal-wave-ready .portal-wave-video { opacity: 1; }
+.portal-wave-control {
+  position: absolute;
+  z-index: 1;
+  right: clamp(24px, 5vw, 80px);
+  bottom: 24px;
+  min-height: 38px;
+  margin: 0;
+  padding: 10px 14px;
+  border: 1px solid #6a7770;
+  border-radius: 0;
+  background: #202823;
+  color: #edf0ed;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.2;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+.portal-wave-control:hover { background: #2e3b33; }
+.portal-wave-control:active { transform: translateY(1px); }
+.portal-wave-control:focus-visible { outline: 2px solid #a9c7bc; outline-offset: 4px; }
+@media (max-width: 767px) {
+  .portal-wave { height: 380px; }
+  .portal-wave-control { right: 24px; bottom: 20px; min-height: 44px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portal-wave-control { transition: none; }
+}

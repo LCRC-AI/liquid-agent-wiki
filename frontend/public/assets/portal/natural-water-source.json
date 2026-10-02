@@ -1,0 +1,20 @@
+{
+  "title": "Water ripples",
+  "provider": "Mixkit / Envato",
+  "item": 568,
+  "source_page": "https://mixkit.co/free-stock-video/water-ripples-568/",
+  "download": "https://assets.mixkit.co/videos/568/568-1080.mp4",
+  "license": "Mixkit Stock Video Free License",
+  "license_url": "https://mixkit.co/license/#videoFree",
+  "terms_url": "https://mixkit.co/terms/",
+  "retrieved": "2026-10-02",
+  "sha256": {
+    "natural-water.mp4": "dae1310bf191d98988e13a6319696187a736d42cdaac4d88defe2444b566d689",
+    "natural-water.jpg": "63d684032fceaf143833d0351ad152f9b9daa23868a4bad619d022fea31ada68"
+  },
+  "usage": "Licensed real-water footage incorporated into the LIQUID-Agent portal background. This third-party media retains its own license; it is not relicensed under the project's software license.",
+  "derivatives": {
+    "natural-water.mp4": "1920x1080 H.264, native 24000/1001 fps, no audio, natural playback speed, fast-start metadata. A 0.75-second tail-to-head dissolve smooths the loop without slowing the water.",
+    "natural-water.jpg": "First frame of the delivered video, extracted with FFmpeg for loading, reduced-motion and media-error fallback."
+  }
+}

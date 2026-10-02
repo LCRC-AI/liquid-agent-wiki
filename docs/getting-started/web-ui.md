@@ -26,56 +26,27 @@ directly at `/#/agent`.
 
 ## Portal
 
-The portal includes:
+The public portal uses a dark, full-screen water homepage with concise navigation:
 
-- a Codex-inspired hero section with a **Try it** installation link
-- a start planner that maps new visitors, data-ready users, result reviewers, and team leads to the right command, guide, and proof point
-- an interactive product-surface explorer that connects the public portal, browser client, terminal CLI, and Python analysis kernel
-- clickable product concepts such as local-first execution, source-aware planning, recoverable autopilot, and professional skill memory
-- a launch-path selector that explains when to use the portal, direct client, terminal CLI, or short `liq` alias, with copyable commands and matching guide links
-- an evidence-flow explorer that shows how a selected public-style example moves from source detection to plan, run, review, and auditable receipts
-- a capability atlas that lets users choose by signal family, then jump directly to the matching Gallery example or Guide
-- a method advisor entry for fragmentomics, methylation, CNV, variant, cfRNA, small-RNA, CTC-table, and plasma-proteomics method questions
-- a trust-contract section that states data boundaries, model-call boundaries, example status, run receipts, and safe failure behavior before users enter the agent console
-- a Try it installation link that works consistently for public visitors and local portal previews
-- an example gallery with public liquid-biopsy workflows, including real local runs where available and guided walkthroughs where full local data are not required, a workflow overview, selectable examples, dataset cards for public reference, access status, run status, local run hint, input shape, intended outcome and caveat, copyable sample prompts, matching guide links, a run-receipt panel for `Source / Control / Outputs / Review`, a visible run package for brief/table/figure/next-action deliverables, transformed working traces, an operation playbook for `Attach / Scan / Plan / Run / Review / Refine`, and `Chat / Plan / Results / Artifacts` run views
-- a setup-path selector that separates one-click Mac install, terminal install, Web workspace launch, and direct workspace launch, each with a copyable command, result summary, and matching guide link
-- an interactive guide system for install, data attachment, planning/autopilot, result inspection, and LLM routing, including a concept map for command shims, source model, safe autopilot, result receipts, model routing, public handoff, a method atlas that maps preprocessing, encoding, cfDNA analysis, professional skills, public datasets, and interfaces back to the full docs, a start chooser for common user intents, an onboarding flow rail, outcome cards, copyable command rails, related examples, and previous/next guide navigation
-- a Vision page with clickable operating principles, proof points, a project map, role-scenario explorer, related product links, and team operating model
-- a shared footer with site-map links, example shortcuts, and the core local launch commands so users do not get stranded at the bottom of long pages
+- **Explore** (`/#/explore`) introduces the liquid-biopsy workspace with a research workflow and a demo that can be stopped or played.
+- **Our story** (`/#/story`) presents the scientific background and research ambition, with links to the University of Leicester's source material.
+- **Docs** provides installation, feature guides, usage instructions and illustrated workflow examples in English and Simplified Chinese.
+- **Try it** opens the selected language's [Installation](installation.md) page, where the existing **Join the Waitlist** button provides the early-access application path.
+- The footer links to user guides, examples, the public portal repository and the [Terms of Use](../release-terms.md).
 
-The gallery and guide system are independent portal subpages, not just homepage
-sections:
+The water background can be paused. Reduced-motion preferences show a still image
+until playback is explicitly requested; a still image is also available if the
+video cannot play. The portal does not run an analysis or automatically open a
+local workspace. After receiving access and installing the software, launch the
+local workspace with `liquid-agent web`.
 
-```text
-/#/gallery
-/#/gallery/<example_id>
-/#/guides
-/#/guides/<guide_id>
-```
-
-This keeps the public portal navigable like a product website while preserving
-the local agent console at `/#/agent`.
-
-The examples are guided walkthroughs unless explicitly marked as completed local
-validation runs. Current completed local validation examples include `GSE171434`
-raw-signal bigWig review, `GSE186573` supplied CNV matrix review, `GSE186575`
-supplied methylation matrix review, and `GSE214344` EPIC-like methylation matrix
-review, plus `msk_access_2021` variant/VAF review when the data disk is mounted.
-The examples mirror the real interaction
-pattern: user prompt, agent response, task plan, report preview, artifact list,
-result table, and visualization preview. Each detailed example also starts with
-a dataset card that states the public-style reference, access status, run status,
-expected input shape, local run hint, validation target, and caveat before
-showing results. The operation playbook then explains how a user controls the
-local agent, what output should appear, and which guide covers that step. The
-Gallery page starts with a compact workflow map so users can choose by signal
-family instead of guessing which example to open first.
+Older gallery, guide and about bookmarks lead to the relevant Docs page or the
+new **Explore** and **Our story** pages.
 
 ## Interface Language
 
-Select **English** or **Chinese** using the globe selector in the portal navigation
-or the workspace header, next to **Colour theme**. Expand the left workspace panel
+Select **English** or **Chinese** using the language selector in the portal navigation
+or the workspace header. Expand the left workspace panel
 first if it is collapsed. Only one interface language is displayed at a time.
 English is the default for the portal, workbench and language-neutral Docs entry,
 even with a Chinese browser or operating system. Chinese is an explicit option;
@@ -97,10 +68,9 @@ setting; no automatic translation call or extra data upload is performed.
 
 ## Colour Themes
 
-Use **Colour theme** in the portal navigation or alongside **LIQUID-Agent** in the
-workspace header. The available palettes are **Soft sage** (default),
-**Soft rose**, **Light blue**, and **Warm stone**. On narrow portal screens,
-the same selector is shown as a compact coloured swatch next to **Try it**.
+Use **Colour theme** alongside **LIQUID-Agent** in the local workspace header.
+The available palettes are **Soft sage** (default), **Soft rose**, **Light blue**,
+and **Warm stone**. The public portal uses its own fixed dark appearance.
 Expand the left workspace panel to reach the selector when the panel is collapsed.
 
 Only interface colours change: backgrounds, borders, text accents, and controls.
@@ -232,7 +202,7 @@ liquid-agent web
 liquid-agent client
 ```
 
-The portal Install section mirrors the same decision tree:
+After early-access approval, choose the local installation or launch command:
 
 | Path | Use it when | Command |
 | --- | --- | --- |
@@ -468,40 +438,24 @@ React 应用不实现独立的科学分析决策树。它将对话线程 ID 和�
 
 ## 门户
 
-门户包括以下内容：
+公开门户采用暗色全屏水面首页，并提供简洁的导航：
 
-- 受 Codex 启发的首页主视觉区，以及**Try it** 安装链接。
-- 入门路径规划器，为首次访问者、已备好数据的用户、结果审阅者和团队负责人匹配适当的命令、指南和验证示例。
-- 交互式产品界面浏览器，串联公共门户、浏览器客户端、终端 CLI 和 Python 分析内核。
-- 可点击的产品概念，包括本地优先执行、感知数据源的规划、可恢复的自动执行，以及专业技能记忆。
-- 启动路径选择器，解释何时使用门户、直接客户端、终端 CLI 或简短的 `liq` 别名，并提供可复制的命令和相应指南链接。
-- 证据流浏览器，展示选定的公共数据风格示例如何从数据源识别进入规划、运行、审阅和可审计的执行凭据。
-- 能力图谱，允许用户按信号类型选择，再直接跳转到对应的 Gallery 示例或 Guide。
-- 方法顾问入口，用于片段组学、甲基化、CNV、变异、cfRNA、小 RNA、CTC 表格和血浆蛋白质组学相关的方法问题。
-- 信任约定区，在用户进入控制台之前说明数据边界、模型调用边界、示例状态、运行凭据和安全失败行为。
-- 公开访客和本地首页预览行为一致的 Try it 安装链接。
-- 公共液体活检工作流示例库：有条件的示例提供真实本地运行，不要求完整本地数据的示例提供引导式演练；包括工作流概览、可选示例、标明公共参考来源的数据集卡片、访问状态、运行状态、本地运行提示、输入结构、预期结果与限制、可复制的示例提示词、相应指南链接、`Source / Control / Outputs / Review` 运行凭据面板、展示简报/表格/图形/下一步操作交付物的运行包、经过整理的工作轨迹、`Attach / Scan / Plan / Run / Review / Refine` 操作手册，以及 `Chat / Plan / Results / Artifacts` 运行视图。
-- 安装路径选择器，区分 Mac 一键安装、终端安装、Web 工作台启动和兼容客户端入口，每条路径均提供可复制命令、预期结果摘要和相应指南链接。
-- 交互式指南系统，涵盖安装、附加数据、规划/自动执行、检查结果和 LLM 路由；包括命令包装器、数据源模型、安全自动执行、结果凭据、模型路由和公共门户跳转的概念图，将预处理、编码、cfDNA 分析、专业技能、公共数据集和接口映射回完整文档的方法图谱，以及常见用户意图入口、新手操作流程、结果卡片、可复制命令栏、相关示例和上一篇/下一篇指南导航。
-- Vision 页面，提供可点击的运行原则、验证依据、项目地图、角色场景浏览器、相关产品链接和团队运行模式。
-- 共享页脚，提供站点地图链接、示例快捷入口和核心本地启动命令，避免用户在长页面底部找不到下一步。
+- **探索**（`/#/explore`）通过科研工作流和可停止／播放的动态演示介绍液体活检工作台。
+- **我们的故事**（`/#/story`）介绍科学背景与科研愿景，并链接到莱斯特大学的相关资料。
+- **Docs** 提供英文和简体中文的安装教程、功能说明、使用指南与图文工作流示例。
+- **Try it** 打开当前语言对应的[安装页面](installation.md)，其中原有的 **Join the Waitlist** 按钮用于申请早期使用权限。
+- 页脚提供用户指南、示例、公开门户仓库和[使用条款](../release-terms.md)的链接。
 
-示例库和指南系统是独立的门户子页面，而不只是首页中的区块：
+水面背景可以暂停；偏好减少动态效果时，在用户主动播放之前显示静态画面，
+视频无法播放时也有静态回退。门户不会运行分析或自动打开本地工作台。
+获得访问权限并安装软件后，可使用 `liquid-agent web` 启动本地工作台。
 
-```text
-/#/gallery
-/#/gallery/<example_id>
-/#/guides
-/#/guides/<guide_id>
-```
-
-这样既能让公共门户像产品网站一样便于导航，又能保留位于 `/#/agent` 的本地智能体控制台。
-
-除非明确标注为已完成的本地验证运行，否则示例均属于引导式演练。目前已完成的本地验证示例包括 `GSE171434` 原始信号 bigWig 审阅、`GSE186573` 已提供的 CNV 矩阵审阅、`GSE186575` 已提供的甲基化矩阵审阅和 `GSE214344` EPIC 类甲基化矩阵审阅；挂载数据盘时还包括 `msk_access_2021` 变异/VAF 审阅。示例遵循真实交互模式：用户提示、智能体回答、任务计划、报告预览、产物列表、结果表格和可视化预览。每个详细示例都会先展示数据集卡片，在结果之前说明公共参考来源、访问状态、运行状态、预期输入结构、本地运行提示、验证目标和限制。操作手册随后解释用户如何控制本地智能体、应该出现哪些输出，以及哪篇指南覆盖该步骤。Gallery 页面开头提供紧凑的工作流地图，用户可以按信号类型选择，不必猜测应该先打开哪个示例。
+旧的示例库、指南和关于页面书签会前往相应的 Docs 页面，或新的**探索**与
+**我们的故事**页面。
 
 ## 界面语言
 
-通过主页导航或工作区标题栏中、主题颜色旁的地球图标选择 **English** 或
+通过主页导航或工作区标题栏中的语言选择器选择 **English** 或
 **简体中文**。如果左侧工作区已收起，请先展开。界面每次只显示一种语言，默认
 英语；即使浏览器或操作系统为中文，首次访问主页、工作台和不指定语言的文档入口
 仍使用英语。中文需主动选择；浏览器会跨页面和刷新记住选择，并在同源标签页之间同步。公开部署的主页
@@ -519,7 +473,7 @@ React 应用不实现独立的科学分析决策树。它将对话线程 ID 和�
 
 ## 颜色主题
 
-在门户导航栏或工作区标题区域 **LIQUID-Agent** 旁边使用 **Colour theme**。可选配色包括 **Soft sage**（默认，柔和鼠尾草绿）、**Soft rose**（淡玫瑰红）、**Light blue**（浅蓝）和 **Warm stone**（暖石色）。在较窄的门户屏幕上，同一选择器会以紧凑色块的形式显示在 **Try it** 旁边。如果左侧工作区面板已折叠，需要先展开面板才能使用该选择器。
+在本地工作区标题区域 **LIQUID-Agent** 旁边使用 **Colour theme**。可选配色包括 **Soft sage**（默认，柔和鼠尾草绿）、**Soft rose**（淡玫瑰红）、**Light blue**（浅蓝）和 **Warm stone**（暖石色）。公开门户采用固定的暗色外观。如果左侧工作区面板已折叠，需要先展开面板才能使用该选择器。
 
 主题只改变界面颜色，包括背景、边框、文本强调色和控件。面板布局、对话状态、分析设置以及科学图形中编码的颜色均不会改变。选择主题不会发起 LLM 请求，不会重启服务，也不会执行分析。
 
@@ -609,7 +563,7 @@ liquid-agent web
 liquid-agent client
 ```
 
-门户 Install 区域使用相同的选择逻辑：
+获准早期使用后，可选择对应的本地安装或启动命令：
 
 | 路径 | 适用情况 | 命令 |
 | --- | --- | --- |

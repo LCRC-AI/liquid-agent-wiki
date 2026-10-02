@@ -5,7 +5,7 @@ import { initializeColorTheme } from "./colorTheme";
 import { initializeLanguage } from "./i18n";
 import "./styles.css";
 import "./theme.css";
-import "./portal-home.css";
+import "./liquid-portal.css";
 import "./portal-appearance.css";
 
 initializeColorTheme();
