@@ -112,7 +112,6 @@ function PortalFooter() {
       </div>
       <div className="liquid-footer-legal" role="group" aria-label={t("Terms and licensing references")}>
         <a className="portal-footer-terms" href={docsHref("release-terms/")}>{t("Terms of Use & Licensing")}</a>
-        <a className="liquid-footer-license-reference" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer">{t("CC BY-NC-ND 4.0 reference")}</a>
       </div>
     </div>
   </footer>;
