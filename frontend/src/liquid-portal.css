@@ -82,11 +82,16 @@
 .liquid-university-logo { display:block; max-width:100%; }
 .liquid-university-logo img { display:block; width:180px; max-width:100%; height:auto; }
 .liquid-footer nav { display:flex; flex-direction:column; align-items:start; gap:10px; font-size:13px; }
+.liquid-footer-top > nav:nth-of-type(1) { padding-left:clamp(24px,5vw,72px); }
+.liquid-footer-top > nav:nth-of-type(2) { padding-left:clamp(12px,2.5vw,36px); }
 .liquid-footer nav h2 { font-size:14px; font-weight:500; color:var(--liquid-text); margin-bottom:7px; }
 .liquid-footer nav a { line-height:1.6; }
 .liquid-footer a:hover { color:var(--liquid-text); }
-.liquid-footer-bottom { display:flex; align-items:center; gap:24px; border-top:1px solid var(--liquid-line); padding:25px 0 30px; font-size:12px; line-height:1.6; }
-.liquid-footer-bottom a { margin-left:auto; }
+.liquid-footer-bottom { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:start; gap:24px; border-top:1px solid var(--liquid-line); padding:25px 0 30px; font-size:12px; line-height:1.6; }
+.liquid-footer-copyright { display:flex; flex-wrap:wrap; align-items:center; gap:8px 24px; }
+.liquid-footer-legal { display:flex; flex-direction:column; align-items:flex-end; justify-self:end; gap:4px; text-align:right; }
+.liquid-footer-legal > .portal-footer-terms { color:var(--liquid-text); font-size:13px; font-weight:500; }
+.liquid-footer-legal .liquid-footer-license-reference { font-size:11px; text-decoration:underline; text-underline-offset:3px; }
 .liquid-skip { position:absolute; top:-80px; left:var(--liquid-gutter); padding:12px; background:var(--liquid-text); color:var(--liquid-surface)!important; z-index:4; }
 .liquid-skip:focus { top:12px; }
 html[lang=zh-CN] .liquid-portal h1 { letter-spacing:-.035em; max-width:11em; line-height:1.12; }
@@ -130,11 +135,11 @@ html[lang=zh-CN] .liquid-story h1 { max-width:10em; }
   .liquid-story-copy p,.liquid-research-story p,.liquid-ambition p { font-size:16px; margin-top:21px; }
   .liquid-research-story,.liquid-ambition { padding:55px var(--liquid-gutter) 62px; }
   .liquid-footer-top { grid-template-columns:1fr 1fr; gap:30px 24px; padding:32px 0 35px; }
+  .liquid-footer-top > nav:nth-of-type(1),.liquid-footer-top > nav:nth-of-type(2) { padding-left:0; }
   .liquid-footer-brand { grid-column:1/-1; gap:24px; }
   .liquid-footer-wordmark { font-size:18px; }
-  .liquid-footer-bottom { display:grid; grid-template-columns:1fr auto; gap:14px; font-size:11px; }
-  .liquid-footer-bottom>span:nth-child(2) { grid-column:1/-1; grid-row:2; }
-  .liquid-footer-bottom a { margin:0; }
+  .liquid-footer-bottom { grid-template-columns:minmax(0,1fr); gap:18px; font-size:11px; }
+  .liquid-footer-legal > .portal-footer-terms { font-size:12px; }
   html[lang=zh-CN] .liquid-portal h1 { font-size:45px; }
 }
 @media(max-width:350px) {
