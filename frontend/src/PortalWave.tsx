@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { t } from "./i18n";
+import { portalText as t } from "./portalText";
 import "./portal-wave.css";
 
 const waterVideo = "./assets/portal/natural-water.mp4";

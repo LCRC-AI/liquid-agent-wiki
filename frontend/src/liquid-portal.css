@@ -33,11 +33,6 @@
 .liquid-portal .portal-tags a:hover,.liquid-portal .portal-tags a[aria-current=page] { color:var(--liquid-text); }
 .liquid-portal .portal-tags a[aria-current=page] { text-decoration:underline; text-underline-offset:8px; text-decoration-thickness:1px; }
 .liquid-header-actions { display:flex; align-items:center; gap:24px; }
-.liquid-portal .portal-choice-group { border:0; border-radius:0; }
-.liquid-portal .portal-choice-trigger { height:36px; color:var(--liquid-muted); font-family:inherit; font-size:14px; }
-.liquid-portal .portal-choice-menu { border:1px solid var(--liquid-line); border-radius:0; background:#202623; color:var(--liquid-text); box-shadow:0 14px 30px #0005; }
-.liquid-portal .portal-choice-menu button { border-radius:0; }
-.liquid-portal .portal-choice-popover { z-index:3; }
 .liquid-portal .liquid-button { min-width:88px; padding:11px 20px; text-align:center; background:var(--liquid-accent); color:#151918; border:0; border-radius:0; font-size:14px; font-weight:500; line-height:1.4; white-space:nowrap; box-shadow:none; }
 .liquid-button:hover { filter:brightness(.91); }
 .liquid-button:active { transform:translateY(1px); }
@@ -58,8 +53,19 @@
 .liquid-home-statement { padding:88px var(--liquid-gutter) 94px; }
 .liquid-home-statement h2 { font-size:clamp(35px,4.2vw,60px); line-height:1.13; font-weight:300; letter-spacing:-.045em; max-width:960px; }
 .liquid-home-statement p { margin-top:25px; max-width:570px; color:var(--liquid-muted); font-size:18px; line-height:1.6; }
-.liquid-history { padding:55px var(--liquid-gutter) 80px; display:grid; grid-template-columns:.85fr 1.15fr; gap:8vw; align-items:start; border-top:1px solid var(--liquid-line); }
-.liquid-history-year { font-size:clamp(100px,19vw,275px); line-height:1; letter-spacing:-.08em; font-weight:200; color:var(--liquid-accent); }
+.liquid-history { padding:55px var(--liquid-gutter) 80px; display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:8vw; align-items:start; border-top:1px solid var(--liquid-line); }
+.liquid-history-year { position:relative; width:max-content; font-size:clamp(100px,16.5vw,250px); line-height:1; letter-spacing:-.08em; font-weight:600; color:var(--liquid-accent); }
+/* One fingertip impression, clipped to the live numerals rather than tiled.
+   A plain text year remains underneath if text clipping is unavailable. */
+@supports ((background-clip:text) or (-webkit-background-clip:text)) {
+  .liquid-history-year::after {
+    content:attr(data-year); position:absolute; inset:0; pointer-events:none;
+    background-image:url("/assets/portal/fingerprint-impression.png");
+    background-repeat:no-repeat; background-position:61% 54%; background-size:auto 140%;
+    background-clip:text; -webkit-background-clip:text; color:transparent; opacity:.32;
+  }
+}
+@media(forced-colors:active) { .liquid-history-year::after { content:none; } }
 .liquid-story h2 { font-size:clamp(32px,3.1vw,46px); font-weight:300; line-height:1.15; letter-spacing:-.04em; max-width:690px; }
 .liquid-story-copy p,.liquid-research-story p,.liquid-ambition p { margin-top:24px; max-width:640px; color:var(--liquid-muted); font-size:18px; line-height:1.65; }
 .liquid-research-story { padding:65px var(--liquid-gutter) 76px; background:#1c2220; }
@@ -96,7 +102,7 @@ html[lang=zh-CN] .liquid-story h1 { max-width:10em; }
   .liquid-portal-home .liquid-header { margin-bottom:-72px; }
   .liquid-brand { font-size:17px; gap:7px; }
   .liquid-brand img { width:25px; height:25px; }
-  .liquid-portal .portal-tags,.liquid-header-actions>.portal-choice-group { display:none; }
+  .liquid-portal .portal-tags { display:none; }
   .liquid-header-actions { margin-left:auto; gap:0; }
   .liquid-portal .liquid-button { padding:9px 13px; min-width:66px; font-size:13px; }
   .liquid-mobile-menu { display:block; }
@@ -105,9 +111,6 @@ html[lang=zh-CN] .liquid-story h1 { max-width:10em; }
   .liquid-mobile-menu nav { position:absolute; top:72px; left:0; right:0; z-index:3; display:flex; flex-direction:column; gap:20px; padding:27px var(--liquid-gutter) 31px; background:#202623; border-bottom:1px solid var(--liquid-line); }
   .liquid-mobile-menu:not([open]) nav { display:none; }
   .liquid-mobile-menu nav>a { font-size:18px; }
-  .liquid-mobile-menu .portal-choice-group { align-self:start; }
-  .liquid-mobile-menu .portal-choice-trigger { padding-left:0; font-size:16px; justify-content:start; }
-  .liquid-mobile-menu .portal-choice-popover { left:0; right:auto; }
   .liquid-portal .liquid-hero { padding:46px var(--liquid-gutter) 39px; }
   .liquid-portal .liquid-hero-immersive { min-height:100dvh; padding:clamp(130px,22dvh,190px) var(--liquid-gutter) 100px; }
   .liquid-hero-wave::after { background:linear-gradient(180deg,#101613cc 0%,#101613cc 9%,#1016139c 25%,#1016139c 58%,#10161318 85%,transparent 100%); }
@@ -119,7 +122,7 @@ html[lang=zh-CN] .liquid-story h1 { max-width:10em; }
   .liquid-home-statement h2 { font-size:36px; }
   .liquid-home-statement p { font-size:16px; }
   .liquid-history { display:flex; flex-direction:column; gap:31px; padding:38px var(--liquid-gutter) 56px; }
-  .liquid-history-year { font-size:136px; }
+  .liquid-history-year { font-size:clamp(112px,35vw,136px); }
   .liquid-story h2 { font-size:34px; }
   .liquid-story-copy p,.liquid-research-story p,.liquid-ambition p { font-size:16px; margin-top:21px; }
   .liquid-research-story,.liquid-ambition { padding:55px var(--liquid-gutter) 62px; }

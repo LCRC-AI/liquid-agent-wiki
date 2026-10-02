@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
-import { PortalAppearance } from "./PortalAppearance";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { PortalCapabilities } from "./PortalCapabilities";
 import { PortalWave } from "./PortalWave";
 import { PortalResearchStats } from "./PortalResearchStats";
-import { currentLanguage, t } from "./i18n";
+import { currentLanguage } from "./i18n";
+import { portalText as t } from "./portalText";
 
 const DNA_HISTORY = "https://le.ac.uk/news/2019/september/10-celebrating-35-years-of-dna-fingerprinting";
 const LIQUID_RESEARCH = "https://le.ac.uk/lcrc/research/liquid-biopsy-for-detection-and-stratification-of-cancer";
@@ -51,7 +51,6 @@ function PortalHeader({ page }: { page: string }) {
         <a href={docs}>{t("Docs")}</a>
       </div>
       <div className="liquid-header-actions">
-        <PortalAppearance showTheme={false} />
         <a className="portal-nav-cta liquid-button" href={docsHref("getting-started/installation/")}>{t("Try it")}</a>
       </div>
       <details className="liquid-mobile-menu" key={page} onClick={event => {
@@ -64,7 +63,6 @@ function PortalHeader({ page }: { page: string }) {
           <a href="#/explore" aria-current={page === "explore" ? "page" : undefined}>{t("Explore")}</a>
           <a href="#/story" aria-current={page === "story" ? "page" : undefined}>{t("Our story")}</a>
           <a href={docs}>{t("Docs")}</a>
-          <PortalAppearance showTheme={false} />
         </nav>
       </details>
     </nav>
@@ -140,7 +138,7 @@ function PortalStory() {
       <p>{t("Our ambition is to help researchers understand cancer sooner, through the molecular clues it leaves behind.")}</p>
     </section>
     <section className="liquid-history" aria-labelledby="liquid-history-title">
-      <div className="liquid-history-year" aria-hidden="true">1984</div>
+      <div className="liquid-history-year" data-year="1984" aria-hidden="true">1984</div>
       <div className="liquid-story-copy">
         <h2 id="liquid-history-title">{t("A discovery that taught us to look closer.")}</h2>
         <p>{t("In 1984, Sir Alec Jeffreys discovered DNA fingerprinting at the University of Leicester, revealing the power of looking closely at molecular differences.")}</p>
@@ -150,7 +148,7 @@ function PortalStory() {
     </section>
     <section className="liquid-research-story">
       <h2>{t("From identity to possibility.")}</h2>
-      <p>{t("Today, Leicester’s liquid-biopsy research investigates cancer signals in blood, including circulating tumour DNA, to study detection, relapse and treatment response.")}</p>
+      <p>{t("Today, Leicester’s liquid-biopsy research investigates cancer signals in blood, including cell free DNA (cfDNA), circulating tumour DNA (ctDNA), and so on, to study detection, relapse and treatment response.")}</p>
       <a className="liquid-text-link" href={LIQUID_RESEARCH} target="_blank" rel="noreferrer">{t("Liquid-biopsy research at Leicester")}</a>
     </section>
     <section className="liquid-ambition">
@@ -165,6 +163,12 @@ function PortalStory() {
 export function LiquidPortal({ route }: { route: string }) {
   const shell = useRef<HTMLDivElement>(null);
   const language = currentLanguage();
+  useLayoutEffect(() => {
+    document.documentElement.lang = "en";
+    // Keep the latest explicit preference for Docs and the workbench, including
+    // changes made in another tab while the English portal is open.
+    return () => { document.documentElement.lang = currentLanguage(); };
+  }, [language]);
   const destination = legacyDestination(route);
   const page = route.startsWith("#/explore") ? "explore" : route.startsWith("#/story") ? "story" : "home";
   const [immersed, setImmersed] = useState(page === "home");

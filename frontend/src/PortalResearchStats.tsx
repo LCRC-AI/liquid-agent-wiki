@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { t } from "./i18n";
+import { portalText as t } from "./portalText";
 import "./portal-research-stats.css";
 
 // Catalogue counts, not a claim that every method is an installed executable.

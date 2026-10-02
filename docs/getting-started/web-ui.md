@@ -20,7 +20,7 @@ directly at `/#/agent`.
 
 - **Public website:** publish the homepage and Docs to GitHub Pages for visitors
   to browse before installation. **Try it** always opens **Getting Started >
-  Installation** in the selected language. No local-service probing is performed.
+  Installation** in the saved Docs language. No local-service probing is performed.
 - **Local application:** launch the installed workspace with `liquid-agent web`.
   Use `liquid-agent wiki` (also `liquid-agt wiki` or `liq wiki`) to open the separately deployed public homepage and Docs. In the interactive CLI, type `wiki` or `/wiki`; `portal` remains a compatible alias.
 
@@ -28,10 +28,13 @@ directly at `/#/agent`.
 
 The public portal uses a dark, full-screen water homepage with concise navigation:
 
+Portal pages are English-only and have no language switch. Visiting the portal
+preserves your saved Docs and local workspace language preferences.
+
 - **Explore** (`/#/explore`) introduces the liquid-biopsy workspace with a research workflow and a demo that can be stopped or played.
 - **Our story** (`/#/story`) presents the scientific background and research ambition, with links to the University of Leicester's source material.
 - **Docs** provides installation, feature guides, usage instructions and illustrated workflow examples in English and Simplified Chinese.
-- **Try it** opens the selected language's [Installation](installation.md) page, where the existing **Join the Waitlist** button provides the early-access application path.
+- **Try it** opens the [Installation](installation.md) page in your saved Docs language, where the existing **Join the Waitlist** button provides the early-access application path.
 - The footer links to user guides, examples, the public portal repository and the [Terms of Use](../release-terms.md).
 
 The water background can be paused. Reduced-motion preferences show a still image
@@ -45,14 +48,17 @@ new **Explore** and **Our story** pages.
 
 ## Interface Language
 
-Select **English** or **Chinese** using the language selector in the portal navigation
-or the workspace header. Expand the left workspace panel
-first if it is collapsed. Only one interface language is displayed at a time.
-English is the default for the portal, workbench and language-neutral Docs entry,
-even with a Chinese browser or operating system. Chinese is an explicit option;
-the browser remembers your choice across pages and reloads
-and synchronises it between tabs on the same origin. A publicly hosted portal and
-the localhost app have separate browser preferences.
+The public portal always displays English and has no language selector.
+Its Docs links follow your saved documentation language without changing it.
+
+Select **English** or **Chinese** in Docs or the local workspace header.
+Expand the left workspace panel first if it is collapsed.
+English is the default for the workbench and language-neutral Docs entry, even
+with a Chinese browser or operating system. Chinese is an explicit option.
+The browser remembers your choice across pages and reloads and synchronises it
+between tabs on the same origin. Returning from the English portal preserves
+that choice. A publicly hosted Docs site and the localhost app have separate
+browser preferences.
 
 Switching language does not reload the page, create a new conversation, clear a
 draft, change the GPT model, or interrupt a running task. If browser storage is
@@ -438,12 +444,12 @@ React 应用不实现独立的科学分析决策树。它将对话线程 ID 和�
 
 ## 门户
 
-公开门户采用暗色全屏水面首页，并提供简洁的导航：
+公开门户采用暗色全屏水面首页，并提供简洁的导航。门户页面固定显示英文，不提供语言切换；访问门户会保留 Docs 和本地工作台已保存的语言偏好：
 
 - **探索**（`/#/explore`）通过科研工作流和可停止／播放的动态演示介绍液体活检工作台。
 - **我们的故事**（`/#/story`）介绍科学背景与科研愿景，并链接到莱斯特大学的相关资料。
 - **Docs** 提供英文和简体中文的安装教程、功能说明、使用指南与图文工作流示例。
-- **Try it** 打开当前语言对应的[安装页面](installation.md)，其中原有的 **Join the Waitlist** 按钮用于申请早期使用权限。
+- **Try it** 按照已保存的 Docs 语言打开[安装页面](installation.md)，其中原有的 **Join the Waitlist** 按钮用于申请早期使用权限。
 - 页脚提供用户指南、示例、公开门户仓库和[使用条款](../release-terms.md)的链接。
 
 水面背景可以暂停；偏好减少动态效果时，在用户主动播放之前显示静态画面，
@@ -455,11 +461,14 @@ React 应用不实现独立的科学分析决策树。它将对话线程 ID 和�
 
 ## 界面语言
 
-通过主页导航或工作区标题栏中的语言选择器选择 **English** 或
-**简体中文**。如果左侧工作区已收起，请先展开。界面每次只显示一种语言，默认
-英语；即使浏览器或操作系统为中文，首次访问主页、工作台和不指定语言的文档入口
-仍使用英语。中文需主动选择；浏览器会跨页面和刷新记住选择，并在同源标签页之间同步。公开部署的主页
-与本地应用属于不同来源，语言偏好分别保存。
+公开门户始终显示英文，不提供语言选择器。门户中的 Docs 链接沿用已保存的
+文档语言，访问门户不会更改这一偏好。
+
+通过 Docs 或本地工作区标题栏选择 **English** 或**简体中文**。如果左侧工作区
+已收起，请先展开。工作台和不指定语言的文档入口默认使用英文，即使浏览器或
+操作系统为中文也一样。中文需主动选择；浏览器会跨页面和刷新记住选择，并在
+同源标签页之间同步。从英文门户返回后，原有语言选择仍会保留。公开部署的
+Docs 与本地应用属于不同来源，语言偏好分别保存。
 
 切换语言不会刷新页面、创建新对话、清空草稿、更换 GPT 模型或中断任务。
 浏览器禁用存储时，当前页面仍可切换。CLI 输出保持英语。

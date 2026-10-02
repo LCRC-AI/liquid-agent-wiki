@@ -6,7 +6,6 @@ import { initializeLanguage } from "./i18n";
 import "./styles.css";
 import "./theme.css";
 import "./liquid-portal.css";
-import "./portal-appearance.css";
 
 initializeColorTheme();
 initializeLanguage();

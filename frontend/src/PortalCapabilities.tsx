@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { currentLanguage, t } from "./i18n";
+import { currentLanguage } from "./i18n";
+import { portalText as t } from "./portalText";
 import "./portal-capabilities.css";
 
 const researchSteps = [
