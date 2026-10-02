@@ -1,3 +1,10 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/images/liquid-agent-lockup-dark.svg" />
+    <img src="assets/images/liquid-agent-lockup-light.svg" alt="LIQUID-Agent" width="580" />
+  </picture>
+</p>
+
 # LIQUID-Agent Wiki
 
 This repository contains the public LIQUID-Agent homepage, feature overview, use cases, installation guide, and user documentation. It is a static site and does not run analyses or receive private liquid-biopsy data.

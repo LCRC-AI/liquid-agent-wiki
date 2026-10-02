@@ -56,6 +56,8 @@ def build_docs(destination: Path) -> None:
             shutil.copy2(ROOT / 'frontend/public/liquid-agent-drop-logo-v3.png', source / 'assets/liquid-agent-drop-logo-v3.png')
             for filename in ('ibm-plex-sans.woff2', 'IBM-Plex-Sans-OFL.txt'):
                 shutil.copy2(ROOT / 'frontend/src/assets' / filename, source / 'assets' / filename)
+            for filename in ('liquid-agent-wordmark.png', 'liquid-wordmark.css'):
+                shutil.copy2(ROOT / 'frontend/src/assets' / filename, source / 'assets' / filename)
             for filename in ('docs.css', 'docs.js'):
                 shutil.copy2(ROOT / 'docs_theme' / filename, source / 'assets' / filename)
             config = copy.deepcopy(base)
@@ -64,7 +66,7 @@ def build_docs(destination: Path) -> None:
                                    logo='assets/liquid-agent-drop-logo-v3.png', favicon='assets/liquid-agent-drop-logo-v3.png')
             config['plugins'] = [{'search': {'lang': ['en'] if locale == 'en' else ['zh']}}]
             config['extra'] = {'docs_locale': locale, 'alternate': True, 'homepage': '../../#/'}
-            config['extra_css'] = ['assets/docs.css']
+            config['extra_css'] = ['assets/liquid-wordmark.css', 'assets/docs.css']
             config['extra_javascript'] = ['assets/docs.js']
             if locale == 'zh':
                 config['nav'] = translated_nav(config['nav'], translations)

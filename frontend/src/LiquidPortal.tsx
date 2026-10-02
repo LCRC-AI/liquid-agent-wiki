@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { PortalCapabilities } from "./PortalCapabilities";
 import { PortalWave } from "./PortalWave";
 import { PortalResearchStats } from "./PortalResearchStats";
+import { LiquidWordmark } from "./LiquidWordmark";
 import { currentLanguage } from "./i18n";
 import { portalText as t } from "./portalText";
 
@@ -43,7 +44,7 @@ function PortalHeader({ page }: { page: string }) {
     <nav className="portal-nav liquid-navigation" aria-label={t("Portal navigation")}>
       <a className="liquid-brand" href="#/" aria-label={t("LIQUID-Agent home")}>
         <img src="./assets/portal/liquid-agent-mark.png" width="29" height="29" alt="" />
-        <span>LIQUID-Agent</span>
+        <LiquidWordmark />
       </a>
       <div className="portal-tags liquid-links">
         <a href="#/explore" aria-current={page === "explore" ? "page" : undefined}>{t("Explore")}</a>
@@ -93,7 +94,7 @@ function PortalFooter() {
   return <footer className="portal-footer liquid-footer" aria-label={t("Liquid Agent site map")}>
     <div className="liquid-footer-top">
       <div className="liquid-footer-brand">
-        <a className="liquid-footer-wordmark" href="#/">LIQUID-Agent</a>
+        <a className="liquid-footer-wordmark" href="#/"><LiquidWordmark /></a>
         <a className="liquid-university-logo" href="https://le.ac.uk/" target="_blank" rel="noreferrer">
           <img src="./assets/portal/university-of-leicester.svg" width="180" height="48" alt={t("University of Leicester")} loading="lazy" />
         </a>
@@ -105,7 +106,7 @@ function PortalFooter() {
       </nav>)}
     </div>
     <div className="liquid-footer-bottom">
-      <span>© {new Date().getFullYear()} LIQUID-Agent.</span>
+      <span>© {new Date().getFullYear()} <LiquidWordmark />.</span>
       <span>{t("For liquid-biopsy research.")}</span>
       <a className="portal-footer-terms" href={docsHref("release-terms/")}>{t("Terms of Use")}</a>
     </div>
@@ -119,7 +120,7 @@ function PortalHome() {
       <div className="liquid-hero-body">
         <h1>{t("Tracing the origins of danger.")}</h1>
         <p>{t("AI for liquid-biopsy research, helping scientists investigate the molecular signals of cancer.")}</p>
-        <a className="liquid-text-link" href="#/explore">{t("Explore LIQUID-Agent")}</a>
+        <a className="liquid-text-link" href="#/explore">{t("Explore")} <LiquidWordmark /></a>
       </div>
     </section>
     <section className="liquid-home-statement">
@@ -153,7 +154,7 @@ function PortalStory() {
     </section>
     <section className="liquid-ambition">
       <h2>{t("Intelligence in service of life.")}</h2>
-      <p>{t("Inspired by that scientific tradition, LIQUID-Agent brings AI into liquid-biopsy analysis, helping researchers connect data, evidence and the next meaningful question.")}</p>
+      <p>{t("Inspired by that scientific tradition,")} <LiquidWordmark /> {t("brings AI into liquid-biopsy analysis, helping researchers connect data, evidence and the next meaningful question.")}</p>
       <p>{t("We work toward a future where earlier understanding opens more possibilities. Scientific judgment remains with the researcher; our role is to support it.")}</p>
       <a className="liquid-text-link" href="#/explore">{t("Explore the research workspace")}</a>
     </section>
