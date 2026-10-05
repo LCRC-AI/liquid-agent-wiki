@@ -11,30 +11,46 @@ requests remain available to internal services and explicit legacy diagnostics.
 Changing models does not replace liquid-biopsy knowledge, skills,
 dataset context, tool checks, cancellation, or user review between steps.
 
+In the same conversation, switching GPT models, providers or local profiles keeps
+the safe conversation context, attachments, current plan, completed results and
+task memory. Earlier relevant decisions can be retrieved from task checkpoints
+when they fall outside the model's recent context. This is retained task evidence,
+not a promise that every old message fits verbatim in every model's prompt. Real
+history edits invalidate superseded context; provider privacy rules still apply.
+
 For explicit on-device inference, see [Local Language Models](local-models.md).
 Local profiles keep their endpoint/authentication separate from these cloud settings.
 
 ## Model Selection
 
-The reviewed catalog lives in `agent/openai_models.py`. As of 24 September 2026:
+The reviewed catalog lives in `agent/openai_models.py`. As of 4 October 2026:
 
 | Web model name | Selection | Policy |
 | --- | --- | --- |
-| `gpt-6-luna` | `auto` | Lowest-cost suitable text/tool-capable tier in the latest reviewed GPT generation |
-| `gpt-6-sol` | `gpt-6-sol` | Explicit higher-capability choice for complex agentic work |
-| `gpt-6-astra` | `gpt-6-astra` | Explicit flagship choice; higher token prices |
+| GPT-6.1 Sol | `gpt-6.1-sol` | Explicit GPT-6.1 Sol choice |
+| GPT-6 Astra | `gpt-6-astra` | Explicit flagship choice; higher token prices |
+| GPT-6 Sol | `gpt-6-sol` | Explicit higher-capability choice for complex agentic work |
+| GPT-6 Luna | `auto` | Existing economical default; unchanged by this catalog update |
+| GPT-5.6 Sol | `gpt-5.6-sol` | Explicit GPT-5.6 Sol choice |
+| GPT-5.6 Terra | `gpt-5.6-terra` | Explicit GPT-5.6 Terra choice |
+| GPT-5.6 Luna | `gpt-5.6-luna` | Explicit GPT-5.6 Luna choice |
 
-The Web menu shows each model name in bold with its key status on the same line, separated by a small grey divider, without tier headings. An unconfigured key is shown in red. The default entry still selects `auto`.
+The Web menu shows each model name in bold with its key status on the same line, separated by a small grey divider, without tier headings. An unconfigured key is shown in red. Its GPT order is **GPT-6.1 Sol**, **GPT-6 Astra**, **GPT-6 Sol**, **GPT-6 Luna**, **GPT-5.6 Sol**, **GPT-5.6 Terra**, **GPT-5.6 Luna**. The GPT-6 Luna entry selects `auto`; menu order does not change the default.
 
-The 5.6 catalog entries were replaced after the official GPT-6 Sol and Luna release;
-GPT-6 Astra remains available. `auto` now resolves to `gpt-6-luna`, while Sol and
-Astra are opt-in and use the same OpenAI key. Existing explicit pins, including an
-older GPT model ID, are not silently rewritten. All three current tiers run through
-the Responses API for tool-capable agent turns. Requests use low reasoning effort
-and omit unsupported sampling parameters. Account access and pricing can change.
+The catalog includes the existing GPT-6 choices alongside GPT-5.6 Luna, Terra,
+Sol and GPT-6.1 Sol. `auto` still resolves to `gpt-6-luna`; all other entries are
+opt-in and use the same OpenAI key. Existing explicit pins, including an older
+GPT model ID, are not silently rewritten. Tool-capable agent turns run through
+the Responses API. Requests use low reasoning effort and omit unsupported
+sampling parameters. A menu entry does not grant account access or prove that a
+particular key can call the model. Account access and pricing can change.
 The authoritative references are the [model catalog](https://developers.openai.com/api/docs/models),
 [pricing](https://developers.openai.com/api/docs/pricing), and
 [latest-model guide](https://developers.openai.com/api/docs/guides/latest-model).
+The added IDs are documented in the official [GPT-5.6 Luna](https://developers.openai.com/api/docs/models/gpt-5.6-luna),
+[GPT-5.6 Terra](https://developers.openai.com/api/docs/models/gpt-5.6-terra),
+[GPT-5.6 Sol](https://developers.openai.com/api/docs/models/gpt-5.6-sol), and
+[GPT-6.1 Sol](https://developers.openai.com/api/docs/models/gpt-6.1-sol) pages.
 
 The Web picker obtains its catalog from `/api/llm/config`; it does not carry a
 second list of model IDs. The CLI also accepts a pinned `gpt-*` model ID.
@@ -43,6 +59,14 @@ Catalog and adapter updates take effect after restarting the local service;
 running analyses are not hot-swapped to a different implementation mid-task.
 If a model is unavailable, the application reports the error. It never silently
 switches providers or upgrades to a more expensive model.
+
+A new model release does not necessarily require an API adapter rewrite. When
+the endpoint and supported request parameters remain compatible, the change
+can be limited to the reviewed selection catalog; the CLI already accepts
+explicit `gpt-*` IDs. Endpoint or parameter changes, SDK incompatibilities and
+model deprecations require a targeted compatibility review and, when necessary,
+adapter changes. The application does not automatically discover or select new
+models at runtime. Updating the catalog does not change `auto` or saved pins.
 
 ```text
 /llm models
@@ -60,6 +84,8 @@ For an explicit higher tier:
 
 `liquid-agent llm-configure` provides interactive setup. Prefer its hidden key
 prompt or `OPENAI_API_KEY` over putting a secret in a command-line argument.
+
+The model choices scroll separately from **Manage local models** and **Manage keys**, which remain visible at the bottom of the menu. The Gemini display name is **Gemini-3.8-Flash**; its API model ID remains `gemini-3.8-flash`.
 
 ## Optional Gemini
 
@@ -175,7 +201,7 @@ sessions' explicit model choices.
 
 ## Requests and Failure Handling
 
-The direct Python SDK adapter uses low reasoning effort for GPT-5 requests.
+The direct Python SDK adapter uses low reasoning effort for GPT-5 and GPT-6 requests.
 Its default output budget is 2,400 tokens, including reasoning; incomplete output
 is rejected instead of being dispatched as a partial tool decision. Optional
 `LIQUIDBIOPSY_LLM_MAX_TOKENS` and `LIQUIDBIOPSY_LLM_TIMEOUT` settings adjust the
@@ -219,21 +245,29 @@ The real key-management dialog; credentials are not visible.
 
 Liquid Agent **默认使用 OpenAI GPT API**，通过 `https://api.openai.com/v1` 的 Responses API 调用。Web 和 CLI 共用 Codex 对话控制器、凭据/模型策略及 LangGraph 科学执行层。内部服务与显式既有诊断仍可直接使用 SDK 请求。更换模型不会替代液体活检知识、skills、数据集上下文、工具检查、取消或步骤之间的用户审阅。
 
+在同一对话内切换 GPT 型号、提供方或本地配置，会保留安全对话上下文、附件、当前计划、已完成结果和任务记忆。较早的相关决定超出模型近期上下文时，可以从任务检查点检索。这表示任务证据得到保留，并不承诺每个模型都能在提示中逐字容纳全部历史。真正修改历史会使过时上下文失效；提供方的隐私规则仍然适用。
+
 ## 模型选择
 
-审查后的目录位于 `agent/openai_models.py`。截至 2026 年 9 月 24 日：
+审查后的目录位于 `agent/openai_models.py`。截至 2026 年 10 月 4 日：
 
 | Web 模型名称 | 选择方式 | 策略 |
 | --- | --- | --- |
-| `gpt-6-luna` | `auto` | 最新已审核 GPT 世代中价格最低且支持文本与工具调用的合适档位 |
-| `gpt-6-sol` | `gpt-6-sol` | 适合复杂智能体任务、需显式选择的更高能力档位 |
-| `gpt-6-astra` | `gpt-6-astra` | 显式选择的旗舰型号，Token 单价更高 |
+| GPT-6.1 Sol | `gpt-6.1-sol` | 显式选择 GPT-6.1 Sol |
+| GPT-6 Astra | `gpt-6-astra` | 显式选择的旗舰型号，Token 单价更高 |
+| GPT-6 Sol | `gpt-6-sol` | 适合复杂智能体任务、需显式选择的更高能力档位 |
+| GPT-6 Luna | `auto` | 原有经济型默认值；本次目录更新不改变它 |
+| GPT-5.6 Sol | `gpt-5.6-sol` | 显式选择 GPT-5.6 Sol |
+| GPT-5.6 Terra | `gpt-5.6-terra` | 显式选择 GPT-5.6 Terra |
+| GPT-5.6 Luna | `gpt-5.6-luna` | 显式选择 GPT-5.6 Luna |
 
-Web 菜单仅显示加粗的模型名称及同一行的密钥状态，中间以灰色细竖线分隔，不显示档位标题。未配置密钥时，状态以红色显示。默认项仍使用 `auto` 选择。
+Web 菜单仅显示加粗的模型名称及同一行的密钥状态，中间以灰色细竖线分隔，不显示档位标题。未配置密钥时，状态以红色显示。GPT 排序为 **GPT-6.1 Sol**、**GPT-6 Astra**、**GPT-6 Sol**、**GPT-6 Luna**、**GPT-5.6 Sol**、**GPT-5.6 Terra**、**GPT-5.6 Luna**。GPT-6 Luna 入口使用 `auto` 选择；菜单顺序不改变默认型号。
 
-官方发布 GPT-6 Sol 与 Luna 后，目录中的 5.6 型号已被替换，既有 GPT-6 Astra 继续保留。`auto` 现在解析为 `gpt-6-luna`；Sol 与 Astra 需手动选择，并使用同一 OpenAI 密钥。已有显式固定型号（包括较旧 GPT ID）不会被静默改写。当前三档的工具型智能体请求均通过 Responses API；请求使用 low 推理强度，不发送不支持的采样参数。账户访问权限与价格可能变化。权威参考是[模型目录](https://developers.openai.com/api/docs/models)、[价格](https://developers.openai.com/api/docs/pricing)、[最新模型指南](https://developers.openai.com/api/docs/guides/latest-model)和[更新日志](https://developers.openai.com/api/docs/changelog)。
+目录保留既有 GPT-6 选项，并加入 GPT-5.6 Luna、Terra、Sol 和 GPT-6.1 Sol。`auto` 仍解析为 `gpt-6-luna`；其他入口需手动选择，并使用同一 OpenAI 密钥。已有显式固定型号（包括较旧 GPT ID）不会被静默改写。工具型智能体请求均通过 Responses API；请求使用 low 推理强度，不发送不支持的采样参数。菜单中出现型号不代表账户获得访问权限，也不证明某个密钥可以调用该型号。账户访问权限与价格可能变化。权威参考是[模型目录](https://developers.openai.com/api/docs/models)、[价格](https://developers.openai.com/api/docs/pricing)、[最新模型指南](https://developers.openai.com/api/docs/guides/latest-model)和[更新日志](https://developers.openai.com/api/docs/changelog)。新增 ID 见官方 [GPT-5.6 Luna](https://developers.openai.com/api/docs/models/gpt-5.6-luna)、[GPT-5.6 Terra](https://developers.openai.com/api/docs/models/gpt-5.6-terra)、[GPT-5.6 Sol](https://developers.openai.com/api/docs/models/gpt-5.6-sol) 与 [GPT-6.1 Sol](https://developers.openai.com/api/docs/models/gpt-6.1-sol) 页面。
 
 Web 选择器从 `/api/llm/config` 获取目录，不另存第二份模型 ID 列表。CLI 也接受固定的 `gpt-*` 模型 ID。经济目录更新时，已保存的显式选择不变。目录和适配器更新在重启本地服务后生效；不会在分析途中热切换实现。模型不可用时，应用报告错误，绝不静默切换提供商或升级到更昂贵模型。
+
+新模型发布不一定需要重写 API 适配器。端点及支持的请求参数兼容时，通常只需更新审查后的选择目录；CLI 已接受显式 `gpt-*` ID。端点或参数变化、SDK 不兼容及模型弃用需要有针对性的兼容审查，必要时修改适配器。应用不会在运行时自动发现或选择新模型；更新目录不会改变 `auto` 或已保存的固定型号。
 
 ```text
 /llm models
@@ -250,6 +284,8 @@ Web 选择器从 `/api/llm/config` 获取目录，不另存第二份模型 ID �
 ```
 
 `liquid-agent llm-configure` 提供交互式设置。优先使用隐藏密钥输入或 `OPENAI_API_KEY`，不要将密钥放在命令行参数中。
+
+型号选项可单独滚动，**Manage local models** 与 **Manage keys** 管理入口始终显示在菜单底部。Gemini 的界面名称为 **Gemini-3.8-Flash**；API 模型 ID 仍为 `gemini-3.8-flash`。
 
 ## 可选 Gemini
 
@@ -304,7 +340,7 @@ liquid-agent web
 
 ## 请求与失败处理
 
-直接 Python SDK 适配器对 GPT-5 请求使用低推理强度。默认输出预算为 2,400 tokens，包括推理；不完整输出会被拒绝，不会作为部分工具决策分发。可选 `LIQUIDBIOPSY_LLM_MAX_TOKENS` 和 `LIQUIDBIOPSY_LLM_TIMEOUT` 调整预算与每请求超时。瞬时失败默认在同一模型上重试一次，再进入短暂冷却。认证失败不会换模型或提供商重试。
+直接 Python SDK 适配器对 GPT-5 和 GPT-6 请求使用低推理强度。默认输出预算为 2,400 tokens，包括推理；不完整输出会被拒绝，不会作为部分工具决策分发。可选 `LIQUIDBIOPSY_LLM_MAX_TOKENS` 和 `LIQUIDBIOPSY_LLM_TIMEOUT` 调整预算与每请求超时。瞬时失败默认在同一模型上重试一次，再进入短暂冷却。认证失败不会换模型或提供商重试。
 
 直接 SDK 适配器设置 `store=false`；Liquid Agent 显式提供本地对话和领域上下文。此标记不承诺 OpenAI 零保留。发送敏感研究数据前，应审阅 [OpenAI 数据控制](https://developers.openai.com/api/docs/guides/your-data)。现有本地科学工具仍在本地处理数据；模型提示可能包含用户问题、数据集元数据、选定汇总及检索到的项目/skill 上下文。
 
