@@ -35,8 +35,6 @@ markdown_extensions:
       alternate_style: true
 nav:
   - Introduction: index.md
-  - History Versions:
-      - V0.1: releases/v0.1.md
   - Getting Started:
       - Installation: getting-started/installation.md
       - Your First Analysis: getting-started/quickstart.md
@@ -58,6 +56,8 @@ nav:
       - Explicit Assay Tables: guides/assay-tables.md
       - Frozen Prediction Studies: guides/prediction-studies.md
       - Local Data and Model Privacy: guides/local-data-privacy.md
+  - History Versions:
+      - V0.1: releases/v0.1.md
   - Reference:
       - Capability Matrix: reference/capability-matrix.md
       - Skill Selection Guide: reference/skill-catalog.md
