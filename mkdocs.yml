@@ -35,12 +35,8 @@ markdown_extensions:
       alternate_style: true
 nav:
   - Introduction: index.md
-  - Capability Atlas:
-      - V0.1 gallery: getting-started/capability-atlas-v0.1.md
-  - Version History:
-      - Overview: releases/index.md
-      - V0.1:
-          - Early-access summary: releases/v0.1.md
+  - History Versions:
+      - V0.1: releases/v0.1.md
   - Getting Started:
       - Installation: getting-started/installation.md
       - Your First Analysis: getting-started/quickstart.md

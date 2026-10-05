@@ -12,9 +12,7 @@ LIQUID-Agent is a research tool, not a diagnostic service. Check input requireme
 
 ## Explore your release
 
-The first early-access release is **V0.1**. Read its [release summary](releases/v0.1.md) for the included capabilities and limits; it does **not** include the 3 October 2026 major scientific upgrade.
-
-Open the [Capability Atlas — V0.1 gallery](getting-started/capability-atlas-v0.1.md) for screenshots of the main interactions. Both **Capability Atlas** and **Version History** have their own sections in the sidebar. The [version archive](releases/index.md) groups release records by decimal version number.
+Open **History Versions → V0.1** for the [early-access release summary](releases/v0.1.md#release-summary) and its [Capability Atlas](releases/v0.1.md#capability-atlas), together on one page. V0.1 does **not** include the 3 October 2026 major scientific upgrade. Future releases use decimal version labels such as V0.2, with one page per released version.
 
 <!-- BEGIN CHINESE TRANSLATION -->
 
@@ -32,6 +30,4 @@ LIQUID-Agent 是科研工具，不是诊断服务。解释结果前，请检查�
 
 ## 找到您使用的版本
 
-首个早鸟测试发布版编号为 **V0.1**。请查看[版本总结](releases/v0.1.md)了解已包含的能力与限制；该版本**不包含** 2026 年 10 月 3 日的科学功能大升级。
-
-[功能 ATLAS — V0.1 画廊](getting-started/capability-atlas-v0.1.md)通过截图展示主要操作。侧栏中设有独立的**功能画廊（ATLAS）**与**版本历史**栏目；[历史版本归档](releases/index.md)按小数点版本编号整理各版本记录。
+打开**历史版本 → V0.1**，即可在同一页查看[早鸟测试版总结](releases/v0.1.md#release-summary)和[功能画廊（ATLAS）](releases/v0.1.md#capability-atlas)。V0.1 **不包含** 2026 年 10 月 3 日的科学功能大升级。后续版本按 V0.2 等小数点编号归档，每个实际发布版本使用一个独立页面。
