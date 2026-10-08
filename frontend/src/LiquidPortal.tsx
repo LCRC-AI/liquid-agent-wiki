@@ -99,6 +99,18 @@ function PortalFooter() {
           <img src="./assets/portal/university-of-leicester.svg" width="180" height="48" alt={t("University of Leicester")} loading="lazy" />
         </a>
       </div>
+      <nav className="liquid-footer-contact" aria-label={t("Contact links")}>
+        <h2>{t("Contact")}</h2>
+        <a href="https://superhy.github.io/" target="_blank" rel="noopener noreferrer">{t("Founder")}</a>
+        <div className="liquid-footer-socials">
+          <a className="liquid-social-link" href="https://www.linkedin.com/in/superhy/" target="_blank" rel="noopener noreferrer" aria-label={t("Founder on LinkedIn")} title="LinkedIn">
+            <span className="liquid-social-icon liquid-social-icon-linkedin" aria-hidden="true" />
+          </a>
+          <a className="liquid-social-link" href="https://x.com/superhy199148" target="_blank" rel="noopener noreferrer" aria-label={t("Founder on X")} title="X">
+            <span className="liquid-social-icon liquid-social-icon-x" aria-hidden="true" />
+          </a>
+        </div>
+      </nav>
       {FOOTER_GROUPS.map(group => <nav key={group.title} aria-label={t("{0} links", { 0: t(group.title) })}>
         <h2>{t(group.title)}</h2>
         {group.links.map(link => <a key={link.label} href={docsHref(link.path)}>{t(link.label)}</a>)}

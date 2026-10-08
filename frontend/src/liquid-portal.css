@@ -75,19 +75,23 @@
 .liquid-ambition { padding:78px var(--liquid-gutter) 95px; }
 .liquid-ambition h2 { font-size:clamp(38px,5vw,70px); max-width:1000px; }
 .liquid-portal .portal-footer { position:relative; z-index:0; display:block; width:auto; max-width:none; padding:0; margin:0 var(--liquid-gutter); border:0; border-top:1px solid var(--liquid-line); border-radius:0; background:none; color:var(--liquid-muted); box-shadow:none; }
-.liquid-footer-top { display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:45px; padding:42px 0 47px; }
+/* Preserve the footer's dark brand tokens; tighten its static navigation grid. */
+.liquid-footer-top { display:grid; grid-template-columns:minmax(180px,1.4fr) minmax(110px,.75fr) minmax(110px,.75fr) minmax(120px,.85fr) minmax(150px,1.2fr); gap:clamp(24px,2.5vw,40px); padding:42px 0 47px; }
 .liquid-footer-brand { display:flex; flex-direction:column; align-items:flex-start; gap:28px; }
 .liquid-footer-wordmark { font-size:20px; color:var(--liquid-text)!important; letter-spacing:-.035em; }
 .liquid-footer-wordmark > .liquid-wordmark { font-size:26px; }
 .liquid-university-logo { display:block; max-width:100%; }
 .liquid-university-logo img { display:block; width:180px; max-width:100%; height:auto; }
 .liquid-footer nav { display:flex; flex-direction:column; align-items:start; gap:10px; font-size:13px; }
-/* Tighten the navigation without moving the Resources grid track. */
-.liquid-footer-top > nav:nth-of-type(1) { padding-left:clamp(24px,5vw,72px); transform:translateX(clamp(12px,3vw,48px)); }
-.liquid-footer-top > nav:nth-of-type(2) { padding-left:clamp(12px,2.5vw,36px); transform:translateX(clamp(6px,1.5vw,24px)); }
 .liquid-footer nav h2 { font-size:14px; font-weight:500; color:var(--liquid-text); margin-bottom:7px; }
 .liquid-footer nav a { line-height:1.6; }
+.liquid-footer-socials { display:flex; align-items:center; gap:8px; }
+.liquid-footer .liquid-social-link { display:flex; align-items:center; justify-content:center; width:32px; height:32px; }
+.liquid-social-icon { display:block; width:20px; height:20px; background:currentColor; }
+.liquid-social-icon-linkedin { -webkit-mask:url("/assets/portal/social/brand-linkedin.svg") center/contain no-repeat; mask:url("/assets/portal/social/brand-linkedin.svg") center/contain no-repeat; }
+.liquid-social-icon-x { -webkit-mask:url("/assets/portal/social/brand-x.svg") center/contain no-repeat; mask:url("/assets/portal/social/brand-x.svg") center/contain no-repeat; }
 .liquid-footer a:hover { color:var(--liquid-text); }
+.liquid-social-link:active { transform:translateY(1px); }
 .liquid-footer-bottom { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:start; gap:24px; border-top:1px solid var(--liquid-line); padding:25px 0 30px; font-size:12px; line-height:1.6; }
 .liquid-footer-copyright { display:flex; flex-wrap:wrap; align-items:center; gap:8px 24px; }
 .liquid-footer-legal { display:flex; flex-direction:column; align-items:flex-end; justify-self:end; gap:1px; line-height:1.35; text-align:right; }
@@ -101,7 +105,8 @@ html[lang=zh-CN] .liquid-story h1 { max-width:10em; }
   .liquid-portal .portal-tags { gap:22px; }
   .liquid-header-actions { gap:15px; }
   .liquid-brand { font-size:17px; }
-  .liquid-footer-top { gap:30px; grid-template-columns:1.1fr 1fr 1fr 1fr; }
+  .liquid-footer-top { gap:30px; grid-template-columns:repeat(4,minmax(0,1fr)); }
+  .liquid-footer-brand { grid-column:1/-1; }
 }
 @media(max-width:767px) {
   .liquid-portal { --liquid-gutter:24px; }
@@ -134,8 +139,7 @@ html[lang=zh-CN] .liquid-story h1 { max-width:10em; }
   .liquid-story h2 { font-size:34px; }
   .liquid-story-copy p,.liquid-research-story p,.liquid-ambition p { font-size:16px; margin-top:21px; }
   .liquid-research-story,.liquid-ambition { padding:55px var(--liquid-gutter) 62px; }
-  .liquid-footer-top { grid-template-columns:1fr 1fr; gap:30px 24px; padding:32px 0 35px; }
-  .liquid-footer-top > nav:nth-of-type(1),.liquid-footer-top > nav:nth-of-type(2) { padding-left:0; transform:none; }
+  .liquid-footer-top { grid-template-columns:repeat(2,minmax(0,1fr)); gap:30px 24px; padding:32px 0 35px; }
   .liquid-footer-brand { grid-column:1/-1; gap:24px; }
   .liquid-footer-wordmark { font-size:18px; }
   .liquid-footer-bottom { grid-template-columns:minmax(0,1fr); gap:18px; font-size:11px; }
