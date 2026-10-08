@@ -13,6 +13,15 @@ the first successful update moves the application into managed versions.
 Python 3.11+ (3.12 recommended) and Node.js/npm must already be installed.
 The installer does **not** install Python or Node.
 
+## Packaged installers and open source { #packaged-installers-and-open-source }
+
+We plan to provide packaged installers that let you install LIQUID-Agent with a
+click. After the testing phase is complete, we will make the software open source.
+The open-source version will receive project updates sooner than packaged releases.
+
+The guide below covers installation from source for the open-source version.
+During testing, use the source package or repository access provided to you.
+
 ## One-command installation
 
 Open a terminal in the extracted repository. If you use conda or a virtualenv,
@@ -259,6 +268,13 @@ WSL follows the Linux installation path rather than the native Windows path.
 早鸟体验申请获批后，请下载并解压邀请中提供的软件包，或使用邀请中提供的访问信息克隆代码。
 安装后保留代码目录，启动命令依赖该目录。前提是本机已安装 Python 3.11+（建议 3.12）
 及 Node.js/npm；安装器**不会连带安装 Python 或 Node**。
+
+## 安装包分发与开源计划 { #packaged-installers-and-open-source }
+
+我们计划提供打包好的安装包，点击安装程序即可安装 LIQUID-Agent。
+测试阶段结束后，我们会将本软件开源。开源版本会比安装包版本更及时地获得项目更新。
+
+以下内容是开源版本的源码安装教程。测试阶段请使用向你提供的源码包或代码仓库访问权限。
 
 ## 一条命令安装
 
