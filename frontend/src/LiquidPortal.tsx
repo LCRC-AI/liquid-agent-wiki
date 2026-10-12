@@ -2,6 +2,8 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { PortalCapabilities } from "./PortalCapabilities";
 import { PortalWave } from "./PortalWave";
 import { PortalResearchStats } from "./PortalResearchStats";
+import { PortalNewsArticle, PortalNewsBlock } from "./PortalNews";
+import { findPortalNews } from "./portalNewsContent";
 import { LiquidWordmark } from "./LiquidWordmark";
 import { currentLanguage } from "./i18n";
 import { portalText as t } from "./portalText";
@@ -139,6 +141,7 @@ function PortalHome() {
         <a className="liquid-text-link" href="#/explore">{t("Explore")} <LiquidWordmark /></a>
       </div>
     </section>
+    <PortalNewsBlock />
     <section className="liquid-home-statement">
       <h2>{t("Earlier insight begins with a closer look.")}</h2>
       <p>{t("We bring intelligence to the research question, helping scientists follow small signals toward a deeper understanding of cancer.")}</p>
@@ -187,7 +190,8 @@ export function LiquidPortal({ route }: { route: string }) {
     return () => { document.documentElement.lang = currentLanguage(); };
   }, [language]);
   const destination = legacyDestination(route);
-  const page = route.startsWith("#/explore") ? "explore" : route.startsWith("#/story") ? "story" : "home";
+  const page = route.startsWith("#/explore") ? "explore" : route.startsWith("#/story") ? "story" : route.startsWith("#/news/") ? "news" : "home";
+  const newsTitle = findPortalNews(route)?.title || "News article not found";
   const [immersed, setImmersed] = useState(page === "home");
   useEffect(() => {
     setImmersed(page === "home");
@@ -204,11 +208,12 @@ export function LiquidPortal({ route }: { route: string }) {
     return () => observer.disconnect();
   }, [page]);
   useEffect(() => {
-    document.title = `LIQUID-Agent | ${page === "explore" ? t("Explore") : page === "story" ? t("Our story") : t("Tracking the early signs of danger.")}`;
-  }, [page, language]);
+    document.title = `LIQUID-Agent | ${page === "explore" ? t("Explore") : page === "story" ? t("Our story") : page === "news" ? newsTitle : t("Tracking the early signs of danger.")}`;
+  }, [page, language, newsTitle]);
   useEffect(() => {
     if (destination) { window.location.replace(destination); return; }
     shell.current?.scrollTo({ top: 0, behavior: "instant" });
+    if (page === "news") shell.current?.querySelector<HTMLElement>("main")?.focus({ preventScroll: true });
     const closeMenu = (event: KeyboardEvent) => {
       if (event.key !== "Escape") return;
       shell.current?.querySelectorAll<HTMLDetailsElement>("details[open]").forEach(menu => {
@@ -226,7 +231,7 @@ export function LiquidPortal({ route }: { route: string }) {
       document.getElementById("liquid-main")?.focus();
     }}>{t("Skip to content")}</a>
     <PortalHeader page={page} />
-    {page === "explore" ? <PortalCapabilities /> : page === "story" ? <PortalStory /> : <PortalHome />}
+    {page === "explore" ? <PortalCapabilities /> : page === "story" ? <PortalStory /> : page === "news" ? <PortalNewsArticle route={route} /> : <PortalHome />}
     <PortalFooter />
   </div>;
 }

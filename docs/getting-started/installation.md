@@ -15,9 +15,11 @@ The installer does **not** install Python or Node.
 
 ## Packaged installers and open source { #packaged-installers-and-open-source }
 
-We plan to provide packaged installers that let you install LIQUID-Agent with a
-click. After the testing phase is complete, we will make the software open source.
+Packaged installers for LIQUID-Agent are available from the download page below.
+After the testing phase is complete, we will make the software open source.
 The open-source version will receive project updates sooner than packaged releases.
+
+[Download installer](https://huggingface.co/datasets/LCRC-AI/liquid-agent){ .md-button .md-button--primary target="_blank" rel="noopener noreferrer" }
 
 The guide below covers installation from source for the open-source version.
 During testing, use the source package or repository access provided to you.
@@ -271,8 +273,10 @@ WSL follows the Linux installation path rather than the native Windows path.
 
 ## 安装包分发与开源计划 { #packaged-installers-and-open-source }
 
-我们计划提供打包好的安装包，点击安装程序即可安装 LIQUID-Agent。
+LIQUID-Agent 打包好的安装包已在下方下载页面提供。
 测试阶段结束后，我们会将本软件开源。开源版本会比安装包版本更及时地获得项目更新。
+
+[下载 安装包](https://huggingface.co/datasets/LCRC-AI/liquid-agent){ .md-button .md-button--primary target="_blank" rel="noopener noreferrer" }
 
 以下内容是开源版本的源码安装教程。测试阶段请使用向你提供的源码包或代码仓库访问权限。
 
